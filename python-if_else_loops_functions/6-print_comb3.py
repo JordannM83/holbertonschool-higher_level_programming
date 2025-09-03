@@ -2,6 +2,6 @@
 for dizaine in range(9):
     for unité in range(dizaine + 1, 10):
         if dizaine == 8 and unité == 9:
-            print(f"{dizaine}{unité}")
+            print("{}{}".format(dizaine, unité))
         else:
-            print(f"{dizaine}{unité}, ", end="")
+            print("{}{}, ".format(dizaine, unité), end="")
