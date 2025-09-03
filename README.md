@@ -5,8 +5,8 @@ Ce dépôt contient des exercices et des projets réalisés dans le cadre du cur
 ## Structure du dépôt
 
 - `python-hello_world/` : Premiers scripts Python pour se familiariser avec le langage.
+- `python-if_else_loops_functions/` : Exercices sur les structures conditionnelles, boucles et fonctions en Python.
 
 ## Auteur
 
-Jordann M.
-# holbertonschool-higher_level_programming
+Jordan M.
