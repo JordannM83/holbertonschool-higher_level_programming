@@ -23,3 +23,6 @@ print("{} = {}".format(roman_number, roman_to_int(roman_number)))
 
 roman_number = ""
 print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+
+roman_number = "AB"
+print("{} = {}".format(roman_number, roman_to_int(roman_number)))
