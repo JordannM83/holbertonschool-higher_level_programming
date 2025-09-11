@@ -20,4 +20,11 @@ def matrix_divided(matrix, div):
         TypeError: if div is not a number
         ZeroDivisionError: if div is equal to 0
     """
-    pass
+    new_matrix = []
+    i = 0
+    for matrice in matrix:
+        new_matrix.append([])
+        for num in matrice:
+            new_matrix[i].append(round(num / div, 2))
+        i += 1
+    return new_matrix
