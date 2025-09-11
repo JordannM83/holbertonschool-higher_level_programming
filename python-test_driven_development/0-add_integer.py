@@ -25,9 +25,16 @@ def add_integer(a, b=98):
     """Add two integers.
         a: first integer / b: second integer (default: 98)
     """
-    if parse_int(a) == -1:
+    if (isinstance(a, float) and a != a) or (isinstance(b, float) and b != b):
+        raise ValueError("cannot convert float NaN to integer")
+
+    if (isinstance(a, float) and (a == float('inf') or a == float('-inf'))) or \
+       (isinstance(b, float) and (b == float('inf') or b == float('-inf'))):
+        raise OverflowError("cannot convert float infinity to integer")
+
+    if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
-    elif parse_int(b) == -1:
+    if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-    else:
-        return int(a + b)
+    
+    return int(a) + int(b)
