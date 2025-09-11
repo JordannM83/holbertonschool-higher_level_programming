@@ -3,6 +3,10 @@
 Module that adds 2 integers
 """
 
+"""
+this foncion parse a number and return it as an integer,
+if it can't be parsed it returns -1
+"""
 def parse_int(num):
     try:
         return int(num)
