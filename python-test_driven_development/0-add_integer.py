@@ -1,12 +1,19 @@
 #!/usr/bin/python3
+
+
 """
 Module that adds 2 integers
+check if typeerror value error
+return sum
 """
+
 
 """
 this foncion parse a number and return it as an integer,
 if it can't be parsed it returns -1
 """
+
+
 def parse_int(num):
     try:
         return int(num)
@@ -16,16 +23,7 @@ def parse_int(num):
 
 def add_integer(a, b=98):
     """Add two integers.
-
-    Args:
-        a: first integer
-        b: second integer (default: 98)
-
-    Returns:
-        The addition of a and b
-
-    Raises:
-        TypeError: if a or b is not an integer or float
+        a: first integer / b: second integer (default: 98)
     """
     if parse_int(a) == -1:
         raise TypeError("a must be an integer")
