@@ -15,8 +15,10 @@ def text_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    last = ""
+    last = " "
     for letter in text:
+        if letter == " " and last == " ":
+            continue
         if (last == "?" or last == "." or last == ":") and letter == " ":
             continue
         if letter == "?" or letter == "." or letter == ":":
