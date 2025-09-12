@@ -10,55 +10,75 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_ordered_list(self):
         """Test an ordered list of integers."""
-        max_integer([1, 2, 3, 4, 5])
+        self.assertEqual(max_integer([1, 2, 3, 4, 5]), 5)
 
     def test_unordered_list(self):
         """Test an unordered list of integers."""
-        max_integer([3, 4, 1, 5, 2])
+        self.assertEqual(max_integer([3, 4, 1, 5, 2]), 5)
 
     def test_max_at_end(self):
         """Test a list with a beginning max value."""
-        max_integer([3, 4, 2, 1, 5])
+        self.assertEqual(max_integer([3, 4, 2, 1, 5]), 5)
 
     def test_max_at_beginning(self):
         """Test a list with a max value at the beginning."""
-        max_integer([6, 2, 3, 1, 4, 5])
+        self.assertEqual(max_integer([6, 2, 3, 1, 4, 5]), 6)
 
     def test_max_in_middle(self):
         """Test a list with a max value in the middle."""
-        max_integer([1, 2, 5, 3, 4])
+        self.assertEqual(max_integer([1, 2, 5, 3, 4]), 5)
 
     def test_one_element_list(self):
         """Test a list with a single element."""
-        max_integer([5])
+        self.assertEqual(max_integer([5]), 5)
 
     def test_floats(self):
         """Test a list of floats."""
-        max_integer([1.5, 1.2, 1.3, 1.6, 1.4])
+        self.assertEqual(max_integer([1.5, 1.2, 1.3, 1.6, 1.4]), 1.6)
 
     def test_ints_and_floats(self):
         """Test a list of ints and floats."""
-        max_integer([1, 1.5, 3, 4, 4.5])
+        self.assertEqual(max_integer([1, 1.5, 3, 4, 4.5]), 4.5)
 
     def test_string(self):
         """Test a string."""
-        max_integer(["hello"])
+        self.assertEqual(max_integer(["hello"]), "hello")
 
     def test_list_of_strings(self):
         """Test a list of strings."""
-        max_integer(["hello", "world", "!!!"])
+        self.assertEqual(max_integer(["hello", "world", "!!!"]), "world")
 
     def test_empty_string(self):
         """Test an empty string."""
-        max_integer([""])
+        self.assertEqual(max_integer([""]), "")
 
     def test_empty_list(self):
         """Test an empty list."""
-        max_integer([])
+        self.assertIsNone(max_integer([]))
 
     def test_none(self):
         """Test None."""
-        max_integer()
+        self.assertIsNone(max_integer())
+
+    def test_negative_numbers(self):
+        """Test a list of negative numbers."""
+        self.assertEqual(max_integer([-1, -2, -3, -4, -5]), -1)
+
+    def test_positive_and_negative(self):
+        """Test a list with positive and negative numbers."""
+        self.assertEqual(max_integer([-10, -5, 0, 5, 10]), 10)
+
+    def test_all_same_numbers(self):
+        """Test a list where all numbers are the same."""
+        self.assertEqual(max_integer([7, 7, 7, 7]), 7)
+
+    def test_large_numbers(self):
+        """Test a list with large numbers."""
+        self.assertEqual(max_integer([1000000, 999999, 1000001]), 1000001)
+
+    def test_zero_in_list(self):
+        """Test a list containing zero."""
+        self.assertEqual(max_integer([0, -1, -2]), 0)
 
 
 if __name__ == '__main__':
