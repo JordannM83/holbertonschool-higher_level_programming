@@ -21,7 +21,7 @@ def matrix_divided(matrix, div):
         ZeroDivisionError: if div is equal to 0
     """
     # Vérification de div
-    if not isinstance(div, (int, float)):
+    if not isinstance(div, (int, float)) or isinstance(div, bool):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
@@ -46,9 +46,10 @@ def matrix_divided(matrix, div):
     # Vérification que tous les éléments sont des nombres
     for row in matrix:
         for element in row:
-            if not isinstance(element, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) "
-                                "of integers/floats")
+            if (not isinstance(element, (int, float)) or
+                    isinstance(element, bool)):
+                raise TypeError("matrix must be a matrix (list of lists) of "
+                                "integers/floats")
 
     # Création de la nouvelle matrice
     new_matrix = []
