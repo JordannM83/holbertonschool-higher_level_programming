@@ -27,9 +27,170 @@ Now use it:
     What's your name?
     <BLANKLINE>
 
+    >>> text_indentation("Text with multiple spaces.    Here")
+    Text with multiple spaces.
+    <BLANKLINE>
+    Here
+
+    >>> text_indentation("No special chars")
+    No special chars
+
+    >>> text_indentation("")
+    
+
+    >>> text_indentation("Single.")
+    Single.
+    <BLANKLINE>
+
+    >>> text_indentation("Single?")
+    Single?
+    <BLANKLINE>
+
+    >>> text_indentation("Single:")
+    Single:
+    <BLANKLINE>
+
+    >>> text_indentation("Multiple...dots???questions:::colons")
+    Multiple.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    dots?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    questions:
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    colons
+
+    >>> text_indentation("Text. With? Multiple: Sentences.")
+    Text.
+    <BLANKLINE>
+    With?
+    <BLANKLINE>
+    Multiple:
+    <BLANKLINE>
+    Sentences.
+    <BLANKLINE>
+
+    >>> text_indentation("Special chars at end.")
+    Special chars at end.
+    <BLANKLINE>
+
+    >>> text_indentation("Special chars at end?")
+    Special chars at end?
+    <BLANKLINE>
+
+    >>> text_indentation("Special chars at end:")
+    Special chars at end:
+    <BLANKLINE>
+
+    >>> text_indentation("Line with spaces.     Another line")
+    Line with spaces.
+    <BLANKLINE>
+    Another line
+
+    >>> text_indentation("Text with spaces.    Next word")
+    Text with spaces.
+    <BLANKLINE>
+    Next word
+
+    >>> text_indentation("Numbers 123. Letters ABC? Symbols @#$:")
+    Numbers 123.
+    <BLANKLINE>
+    Letters ABC?
+    <BLANKLINE>
+    Symbols @#$:
+    <BLANKLINE>
+
 Error cases:
 
     >>> text_indentation(123)
     Traceback (most recent call last):
         ...
     TypeError: text must be a string
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation([])
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation({})
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation(3.14)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation(True)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Edge cases:
+
+    >>> text_indentation("   ")
+       
+
+    >>> text_indentation("...")
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+
+    >>> text_indentation("???")
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+
+    >>> text_indentation(":::")
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+    >>> text_indentation("Text with\nnewlines. And more\nlines?")
+    Text with
+    newlines.
+    <BLANKLINE>
+    And more
+    lines?
+    <BLANKLINE>
+
+Missing argument:
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'

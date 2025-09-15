@@ -7,3 +7,9 @@ matrix = [
 ]
 print(matrix_divided(matrix, 3))
 print(matrix)
+matrix = [
+    ["a", 2, 3],
+    [4, 5, 6]
+]
+print(matrix_divided(matrix, 3))
+print(matrix)

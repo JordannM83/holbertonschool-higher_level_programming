@@ -13,4 +13,16 @@ def text_indentation(text):
     Raises:
         TypeError: if text is not a string
     """
-    pass
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+    last = " "
+    for letter in text:
+        if letter == " " and last == " ":
+            continue
+        if (last == "?" or last == "." or last == ":") and letter == " ":
+            continue
+        if letter == "?" or letter == "." or letter == ":":
+            print("{}\n".format(letter))
+        else:
+            print(letter, end="")
+        last = letter

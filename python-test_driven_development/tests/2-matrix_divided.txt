@@ -30,6 +30,21 @@ Test with floats:
     >>> print(matrix_divided(matrix, 2.5))
     [[0.6, 1.0], [1.8, 2.2]]
 
+Test with single element:
+
+    >>> matrix_divided([[5]], 2)
+    [[2.5]]
+
+Test with empty row:
+
+    >>> matrix_divided([[]], 2)
+    [[]]
+
+Test with zeros in matrix:
+
+    >>> matrix_divided([[0, 0], [0, 0]], 2)
+    [[0.0, 0.0], [0.0, 0.0]]
+
 Error cases - Division by zero:
 
     >>> matrix_divided([[1, 2]], 0)
@@ -61,9 +76,39 @@ Error cases - Invalid matrix:
         ...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+    >>> matrix_divided([[1, True], [3, 4]], 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided([(1, 2), (3, 4)], 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided(None, 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
 Error cases - Invalid divisor:
 
     >>> matrix_divided([[1, 2]], "2")
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+    >>> matrix_divided([[1, 2]], None)
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+    >>> matrix_divided([[1, 2]], True)
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+    >>> matrix_divided([[1, 2]], 1+2j)
     Traceback (most recent call last):
         ...
     TypeError: div must be a number
@@ -74,3 +119,16 @@ Test with missing arguments:
     Traceback (most recent call last):
         ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+    >>> matrix_divided()
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Test with special float values:
+
+    >>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+    [[0.0, 0.0], [0.0, 0.0]]
+
+    >>> matrix_divided([[1, 2], [3, 4]], float('-inf'))
+    [[-0.0, -0.0], [-0.0, -0.0]]
