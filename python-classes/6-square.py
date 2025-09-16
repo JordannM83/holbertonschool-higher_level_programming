@@ -1,11 +1,5 @@
 #!/usr/bin/python3
 """
-This module defines a Square class with position and printing functionality.
-
-The Square class represents a square geometric figure with the ability
-to be positioned and printed using the '#' character.
-"""
-"""
 Module defining the Square class, which allows creation and
 manipulation of squares with a specific size and position.
 The Square class provides methods to calculate area and print
@@ -20,8 +14,6 @@ class Square:
     with custom formatting.
     The position allows the square to be printed with an offset in the console.
     """
-    __size = None
-    __position = None
 
     def __init__(self, size=0, position=(0, 0)):
         """
@@ -77,9 +69,9 @@ class Square:
         Value must be a tuple of two positive integers.
         Raises TypeError if invalid.
         """
-        if (not isinstance(value, tuple) or isinstance(value[0], int)
-           or isinstance(value[1], int) or value[0] < 0
-           or value[1] < 0 or len(value) < 1):
+        if (not isinstance(value, tuple) or len(value) != 2 or
+           not isinstance(value[0], int) or not isinstance(value[1], int)
+           or value[0] < 0 or value[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
@@ -94,11 +86,11 @@ class Square:
         if self.size == 0:
             print("")
         else:
-                for i in range(self.__position[1]):
-                    print()
-                for i in range(0, self.size):
-                    for k in range(0, self.position[0]):
-                        print(" ", end="")
-                    for j in range(0, self.size):
-                        print("#", end="")
-                    print("")
+            for i in range(self.__position[1]):
+                print()
+            for i in range(0, self.size):
+                for k in range(0, self.position[0]):
+                    print(" ", end="")
+                for j in range(0, self.size):
+                    print("#", end="")
+                print("")
