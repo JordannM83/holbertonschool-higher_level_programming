@@ -22,8 +22,18 @@ class Square:
         be a tuple of 2 positive integers.
         Raises TypeError or ValueError if arguments are invalid.
         """
-        self.__size = size
-        self.__position = position
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        elif size < 0:
+            raise ValueError("size must be >= 0")
+        else:
+            self.__size = size
+        if (not isinstance(position, tuple) or len(position) != 2 or
+           not isinstance(position[0], int) or not isinstance(position[1], int)
+           or position[0] < 0 or position[1] < 0):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = position
 
     @property
     def size(self):
