@@ -145,6 +145,14 @@ class Rectangle:
         Rectangle.number_of_instances -= 1
 
     def bigger_or_equal(rect_1, rect_2):
+        """
+        Module that returns the biggest rectangle based on the area
+        rect_1 must be an instance of Rectangle, otherwise raise a TypeError
+        exception with the message rect_1 must be an instance of Rectangle
+        rect_2 must be an instance of Rectangle, otherwise raise a TypeError
+        exception with the message rect_2 must be an instance of Rectangle
+        Returns rect_1 if both have the same area value
+        """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
