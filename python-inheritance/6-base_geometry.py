@@ -19,4 +19,4 @@ class BaseGeometry:
             Exception: Always raises an Exception with the message
                       "area() is not implemented"
         """
-        pass
+        raise Exception("area() is not implemented")
