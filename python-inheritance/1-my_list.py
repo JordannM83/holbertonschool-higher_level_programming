@@ -20,4 +20,4 @@ class MyList(list):
         Assumes that all elements of the list will be of type int.
         Does not modify the original list.
         """
-        pass
+        print(sorted(self))
