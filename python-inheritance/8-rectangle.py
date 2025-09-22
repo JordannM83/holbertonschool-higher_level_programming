@@ -47,7 +47,11 @@ class Rectangle(BaseGeometry):
         this module is the initilisation of rectangle
         """
         if BaseGeometry.integer_validator(self, "width", width) and width > 0:
-            __width = width
+            self.__width = width
+        else:
+            self.__width = None
         if (BaseGeometry.integer_validator(self, "height", height) and
            height > 0):
             __height = height
+        else:
+            self.__height = None
