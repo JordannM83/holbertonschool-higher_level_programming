@@ -16,7 +16,8 @@ class Square(Rectangle):
         """
         this module is the initilisation of square
         """
-        self.integer_validator("size", size)
-        self.__size = size
-        self.__width = size
-        self.__height = size
+        super().__init__(size, size)
+
+    def __str__(self):
+        return (f"[Rectangle] {self._Rectangle__width}/"
+                f"{self._Rectangle__height}")
