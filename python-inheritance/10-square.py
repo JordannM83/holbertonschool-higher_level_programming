@@ -17,6 +17,7 @@ class Square(Rectangle):
         this module is the initilisation of square
         """
         super().__init__(size, size)
+        self.__size = size
 
     def __str__(self):
         return (f"[Rectangle] {self._Rectangle__width}/"
