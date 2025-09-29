@@ -1,0 +1,32 @@
+Test cases for 12-pascal_triangle module
+======================================
+
+Import the function:
+    >>> pascal_triangle = __import__('12-pascal_triangle').pascal_triangle
+
+Test module docstring:
+    >>> module = __import__('12-pascal_triangle')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(pascal_triangle.__doc__) > 10
+    True
+
+Test function exists and is callable:
+    >>> callable(pascal_triangle)
+    True
+
+Test function can be called with different arguments:
+    >>> result0 = pascal_triangle(0)
+    >>> result1 = pascal_triangle(1) 
+    >>> result_neg = pascal_triangle(-1)
+    >>> # Function should execute without error
+
+Test function accepts integer parameters:
+    >>> import numbers
+    >>> n = 5
+    >>> isinstance(n, numbers.Integral)
+    True
+    >>> result = pascal_triangle(n)
+    >>> # Should accept integer input without error

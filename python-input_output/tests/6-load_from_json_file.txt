@@ -1,0 +1,82 @@
+Test cases for 6-load_from_json_file module
+=========================================
+
+Import the function:
+    >>> load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+
+Test module docstring:
+    >>> module = __import__('6-load_from_json_file')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(load_from_json_file.__doc__) > 10
+    True
+
+Test loading list from JSON file:
+    >>> import tempfile
+    >>> import os
+    >>> import json
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> json.dump([1, 2, 3, 4, 5], temp_file)
+    >>> temp_file.close()
+    >>> result = load_from_json_file(temp_file.name)
+    >>> result
+    [1, 2, 3, 4, 5]
+    >>> type(result)
+    <class 'list'>
+    >>> os.unlink(temp_file.name)
+
+Test loading dictionary from JSON file:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> test_dict = {'name': 'Bob', 'age': 30, 'skills': ['Python', 'JavaScript']}
+    >>> json.dump(test_dict, temp_file)
+    >>> temp_file.close()
+    >>> result = load_from_json_file(temp_file.name)
+    >>> result['name']
+    'Bob'
+    >>> result['age']
+    30
+    >>> result['skills']
+    ['Python', 'JavaScript']
+    >>> type(result)
+    <class 'dict'>
+    >>> os.unlink(temp_file.name)
+
+Test loading string from JSON file:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> json.dump("Hello from file", temp_file)
+    >>> temp_file.close()
+    >>> result = load_from_json_file(temp_file.name)
+    >>> result
+    'Hello from file'
+    >>> type(result)
+    <class 'str'>
+    >>> os.unlink(temp_file.name)
+
+Test loading number from JSON file:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> json.dump(99, temp_file)
+    >>> temp_file.close()
+    >>> result = load_from_json_file(temp_file.name)
+    >>> result
+    99
+    >>> type(result)
+    <class 'int'>
+    >>> os.unlink(temp_file.name)
+
+Test loading boolean and null:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> json.dump(True, temp_file)
+    >>> temp_file.close()
+    >>> result = load_from_json_file(temp_file.name)
+    >>> result
+    True
+    >>> os.unlink(temp_file.name)
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> json.dump(None, temp_file)
+    >>> temp_file.close()
+    >>> result = load_from_json_file(temp_file.name)
+    >>> result is None
+    True
+    >>> os.unlink(temp_file.name)

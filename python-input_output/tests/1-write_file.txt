@@ -1,0 +1,59 @@
+Test cases for 1-write_file module
+===================================
+
+Import the function:
+    >>> write_file = __import__('1-write_file').write_file
+
+Test module docstring:
+    >>> module = __import__('1-write_file')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(write_file.__doc__) > 10
+    True
+
+Test writing text to a file:
+    >>> import tempfile
+    >>> import os
+    >>> temp_file = tempfile.NamedTemporaryFile(delete=False)
+    >>> temp_file.close()
+    >>> result = write_file(temp_file.name, "Hello World")
+    >>> result
+    11
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     content = f.read()
+    >>> content
+    'Hello World'
+    >>> os.unlink(temp_file.name)
+
+Test writing empty string:
+    >>> temp_file = tempfile.NamedTemporaryFile(delete=False)
+    >>> temp_file.close()
+    >>> result = write_file(temp_file.name, "")
+    >>> result
+    0
+    >>> os.unlink(temp_file.name)
+
+Test overwriting existing file:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False)
+    >>> temp_file.write("Original content")
+    16
+    >>> temp_file.close()
+    >>> result = write_file(temp_file.name, "New content")
+    >>> result
+    11
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     content = f.read()
+    >>> content
+    'New content'
+    >>> os.unlink(temp_file.name)
+
+Test writing multiline text:
+    >>> temp_file = tempfile.NamedTemporaryFile(delete=False)
+    >>> temp_file.close()
+    >>> text = "Line 1\nLine 2\nLine 3"
+    >>> result = write_file(temp_file.name, text)
+    >>> result
+    20
+    >>> os.unlink(temp_file.name)

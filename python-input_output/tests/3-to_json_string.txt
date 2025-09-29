@@ -1,0 +1,70 @@
+Test cases for 3-to_json_string module
+====================================
+
+Import the function:
+    >>> to_json_string = __import__('3-to_json_string').to_json_string
+
+Test module docstring:
+    >>> module = __import__('3-to_json_string')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(to_json_string.__doc__) > 10
+    True
+
+Test converting list to JSON:
+    >>> result = to_json_string([1, 2, 3])
+    >>> result
+    '[1, 2, 3]'
+    >>> type(result)
+    <class 'str'>
+
+Test converting dictionary to JSON:
+    >>> my_dict = {'name': 'John', 'age': 30, 'city': 'New York'}
+    >>> result = to_json_string(my_dict)
+    >>> '"name": "John"' in result
+    True
+    >>> '"age": 30' in result
+    True
+    >>> type(result)
+    <class 'str'>
+
+Test converting string to JSON:
+    >>> result = to_json_string("Hello World")
+    >>> result
+    '"Hello World"'
+
+Test converting integer to JSON:
+    >>> result = to_json_string(42)
+    >>> result
+    '42'
+
+Test converting boolean to JSON:
+    >>> result = to_json_string(True)
+    >>> result
+    'true'
+    >>> result = to_json_string(False)
+    >>> result
+    'false'
+
+Test converting None to JSON:
+    >>> result = to_json_string(None)
+    >>> result
+    'null'
+
+Test converting empty list:
+    >>> result = to_json_string([])
+    >>> result
+    '[]'
+
+Test converting empty dictionary:
+    >>> result = to_json_string({})
+    >>> result
+    '{}'
+
+Test nested structures:
+    >>> nested = {'list': [1, 2, 3], 'dict': {'inner': 'value'}}
+    >>> result = to_json_string(nested)
+    >>> '"list": [1, 2, 3]' in result
+    True

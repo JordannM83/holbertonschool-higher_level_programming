@@ -1,0 +1,43 @@
+Test cases for 0-read_file module
+==================================
+
+First import the function from the module:
+    >>> read_file = __import__('0-read_file').read_file
+
+Test module docstring exists and is meaningful:
+    >>> module = __import__('0-read_file')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring exists and is meaningful:
+    >>> len(read_file.__doc__) > 10
+    True
+
+Test reading a file with content (we'll use the existing my_file_0.txt):
+    >>> read_file("my_file_0.txt") # doctest: +ELLIPSIS
+    We offer a truly innovative approach to education:
+    focus on building reliable applications and scalable systems, take on real-world challenges, collaborate with your peers. 
+    <BLANKLINE>
+    A school every software engineer would have dreamt of!
+
+Test with empty file:
+    >>> import tempfile
+    >>> import os
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> temp_file.write("")
+    0
+    >>> temp_file.close()
+    >>> read_file(temp_file.name)
+    <BLANKLINE>
+    >>> os.unlink(temp_file.name)
+
+Test reading file with multiple lines:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> chars_written = temp_file.write("Line 1\nLine 2\nLine 3\n")
+    >>> temp_file.close()
+    >>> read_file(temp_file.name)
+    Line 1
+    Line 2
+    Line 3
+    <BLANKLINE>
+    >>> os.unlink(temp_file.name)

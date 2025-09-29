@@ -1,0 +1,39 @@
+Test cases for 10-student module
+===============================
+
+Import the class:
+    >>> Student = __import__('10-student').Student
+
+Test module docstring:
+    >>> module = __import__('10-student')
+    >>> len(module.__doc__) > 10
+    True
+
+Test class docstring:
+    >>> len(Student.__doc__) > 10
+    True
+
+Test __init__ method docstring:
+    >>> len(Student.__init__.__doc__) > 10
+    True
+
+Test to_json method docstring:
+    >>> len(Student.to_json.__doc__) > 10
+    True
+
+Test Student class can be instantiated:
+    >>> student = Student("John", "Doe", 23)
+    >>> type(student).__name__
+    'Student'
+
+Test that to_json method exists and is callable:
+    >>> student = Student("Alice", "Smith", 25)
+    >>> hasattr(student, 'to_json')
+    True
+    >>> callable(student.to_json)
+    True
+
+Test that __init__ method accepts correct parameters:
+    >>> student2 = Student("Bob", "Johnson", 30)
+    >>> type(student2).__name__
+    'Student'

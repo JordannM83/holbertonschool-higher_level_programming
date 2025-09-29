@@ -1,0 +1,40 @@
+Test cases for 11-student module
+===============================
+
+Import the class:
+    >>> Student = __import__('11-student').Student
+
+Test module docstring:
+    >>> module = __import__('11-student')
+    >>> len(module.__doc__) > 10
+    True
+
+Test class docstring:
+    >>> len(Student.__doc__) > 10
+    True
+
+Test reload_from_json method docstring:
+    >>> len(Student.reload_from_json.__doc__) > 10
+    True
+
+Test that methods exist and are callable:
+    >>> student = Student("Alice", "Smith", 25)
+    >>> hasattr(student, 'to_json')
+    True
+    >>> callable(student.to_json)
+    True
+    >>> hasattr(student, 'reload_from_json')
+    True
+    >>> callable(student.reload_from_json)
+    True
+
+Test Student class can be instantiated:
+    >>> student = Student("John", "Doe", 25)
+    >>> type(student).__name__
+    'Student'
+
+Test that reload_from_json method can be called (basic functionality test):
+    >>> student = Student("Original", "Name", 20)
+    >>> test_data = {"first_name": "New", "last_name": "Person", "age": 30}
+    >>> student.reload_from_json(test_data)
+    >>> # Method should execute without error

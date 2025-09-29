@@ -1,0 +1,76 @@
+Test cases for 4-from_json_string module
+======================================
+
+Import the function:
+    >>> from_json_string = __import__('4-from_json_string').from_json_string
+
+Test module docstring:
+    >>> module = __import__('4-from_json_string')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(from_json_string.__doc__) > 10
+    True
+
+Test converting JSON list to Python list:
+    >>> result = from_json_string('[1, 2, 3]')
+    >>> result
+    [1, 2, 3]
+    >>> type(result)
+    <class 'list'>
+
+Test converting JSON dictionary to Python dictionary:
+    >>> json_str = '{"name": "John", "age": 30}'
+    >>> result = from_json_string(json_str)
+    >>> result['name']
+    'John'
+    >>> result['age']
+    30
+    >>> type(result)
+    <class 'dict'>
+
+Test converting JSON string to Python string:
+    >>> result = from_json_string('"Hello World"')
+    >>> result
+    'Hello World'
+    >>> type(result)
+    <class 'str'>
+
+Test converting JSON number to Python number:
+    >>> result = from_json_string('42')
+    >>> result
+    42
+    >>> type(result)
+    <class 'int'>
+
+Test converting JSON boolean to Python boolean:
+    >>> result = from_json_string('true')
+    >>> result
+    True
+    >>> type(result)
+    <class 'bool'>
+    >>> result = from_json_string('false')
+    >>> result
+    False
+
+Test converting JSON null to Python None:
+    >>> result = from_json_string('null')
+    >>> result is None
+    True
+
+Test converting empty JSON structures:
+    >>> result = from_json_string('[]')
+    >>> result
+    []
+    >>> result = from_json_string('{}')
+    >>> result
+    {}
+
+Test nested JSON structures:
+    >>> json_str = '{"list": [1, 2, 3], "dict": {"inner": "value"}}'
+    >>> result = from_json_string(json_str)
+    >>> result['list']
+    [1, 2, 3]
+    >>> result['dict']['inner']
+    'value'

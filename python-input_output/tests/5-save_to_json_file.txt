@@ -1,0 +1,76 @@
+Test cases for 5-save_to_json_file module
+=======================================
+
+Import the function:
+    >>> save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+
+Test module docstring:
+    >>> module = __import__('5-save_to_json_file')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(save_to_json_file.__doc__) > 10
+    True
+
+Test saving list to JSON file:
+    >>> import tempfile
+    >>> import os
+    >>> import json
+    >>> temp_file = tempfile.NamedTemporaryFile(delete=False)
+    >>> temp_file.close()
+    >>> my_list = [1, 2, 3, 4, 5]
+    >>> save_to_json_file(my_list, temp_file.name)
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     loaded_data = json.load(f)
+    >>> loaded_data
+    [1, 2, 3, 4, 5]
+    >>> os.unlink(temp_file.name)
+
+Test saving dictionary to JSON file:
+    >>> temp_file = tempfile.NamedTemporaryFile(delete=False)
+    >>> temp_file.close()
+    >>> my_dict = {'name': 'Alice', 'age': 25, 'active': True}
+    >>> save_to_json_file(my_dict, temp_file.name)
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     loaded_data = json.load(f)
+    >>> loaded_data['name']
+    'Alice'
+    >>> loaded_data['age']
+    25
+    >>> loaded_data['active']
+    True
+    >>> os.unlink(temp_file.name)
+
+Test saving string to JSON file:
+    >>> temp_file = tempfile.NamedTemporaryFile(delete=False)
+    >>> temp_file.close()
+    >>> my_string = "Hello JSON World"
+    >>> save_to_json_file(my_string, temp_file.name)
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     loaded_data = json.load(f)
+    >>> loaded_data
+    'Hello JSON World'
+    >>> os.unlink(temp_file.name)
+
+Test saving number to JSON file:
+    >>> temp_file = tempfile.NamedTemporaryFile(delete=False)
+    >>> temp_file.close()
+    >>> save_to_json_file(42, temp_file.name)
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     loaded_data = json.load(f)
+    >>> loaded_data
+    42
+    >>> os.unlink(temp_file.name)
+
+Test overwriting existing file:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False)
+    >>> temp_file.write('old content')
+    11
+    >>> temp_file.close()
+    >>> save_to_json_file({'new': 'data'}, temp_file.name)
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     loaded_data = json.load(f)
+    >>> loaded_data
+    {'new': 'data'}
+    >>> os.unlink(temp_file.name)

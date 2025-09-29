@@ -3,6 +3,7 @@
 This module contains a function that returns the JSON representation of an
 object (string).
 """
+import json
 
 
 def to_json_string(my_obj):
@@ -15,4 +16,4 @@ def to_json_string(my_obj):
     Returns:
         str: The JSON string representation of the object.
     """
-    pass
+    return json.dumps(my_obj)

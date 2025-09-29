@@ -1,0 +1,49 @@
+Test cases for 8-class_to_json module
+===================================
+
+Import the function:
+    >>> class_to_json = __import__('8-class_to_json').class_to_json
+
+Test module docstring:
+    >>> module = __import__('8-class_to_json')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(class_to_json.__doc__) > 10
+    True
+
+Test with simple class instance:
+    >>> MyClass = __import__('8-my_class').MyClass
+    >>> m = MyClass("John")
+    >>> m.number = 89
+    >>> result = class_to_json(m)
+    >>> type(result)
+    <class 'dict'>
+    >>> result['name']
+    'John'
+    >>> result['number']
+    89
+
+Test with more complex class:
+    >>> MyClass2 = __import__('8-my_class_2').MyClass
+    >>> m2 = MyClass2("Alice")
+    >>> m2.win()
+    >>> result = class_to_json(m2)
+    >>> type(result)
+    <class 'dict'>
+    >>> result['_MyClass__name']
+    'Alice'
+    >>> result['number']
+    4
+    >>> result['is_team_red']
+    True
+    >>> result['score']
+    1
+
+Test that result contains serializable types only:
+    >>> MyClass = __import__('8-my_class').MyClass
+    >>> m = MyClass("Test")
+    >>> result = class_to_json(m)
+    >>> all(isinstance(v, (str, int, float, bool, list, dict, type(None))) for v in result.values())
+    True

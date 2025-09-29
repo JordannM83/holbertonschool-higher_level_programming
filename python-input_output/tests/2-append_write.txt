@@ -1,0 +1,73 @@
+Test cases for 2-append_write module
+====================================
+
+Import the function:
+    >>> append_write = __import__('2-append_write').append_write
+
+Test module docstring:
+    >>> module = __import__('2-append_write')
+    >>> len(module.__doc__) > 10
+    True
+
+Test function docstring:
+    >>> len(append_write.__doc__) > 10
+    True
+
+Test appending to existing file:
+    >>> import tempfile
+    >>> import os
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> temp_file.write("Initial content")
+    15
+    >>> temp_file.close()
+    >>> result = append_write(temp_file.name, " appended")
+    >>> result
+    9
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     content = f.read()
+    >>> content
+    'Initial content appended'
+    >>> os.unlink(temp_file.name)
+
+Test appending to non-existing file (should create it):
+    >>> import uuid
+    >>> filename = f"temp_{uuid.uuid4().hex}.txt"
+    >>> result = append_write(filename, "New file content")
+    >>> result
+    16
+    >>> with open(filename, 'r', encoding='utf-8') as f:
+    ...     content = f.read()
+    >>> content
+    'New file content'
+    >>> os.unlink(filename)
+
+Test appending empty string:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> temp_file.write("Content")
+    7
+    >>> temp_file.close()
+    >>> result = append_write(temp_file.name, "")
+    >>> result
+    0
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     content = f.read()
+    >>> content
+    'Content'
+    >>> os.unlink(temp_file.name)
+
+Test multiple appends:
+    >>> temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
+    >>> temp_file.write("Start")
+    5
+    >>> temp_file.close()
+    >>> result1 = append_write(temp_file.name, " middle")
+    >>> result2 = append_write(temp_file.name, " end")
+    >>> result1
+    7
+    >>> result2
+    4
+    >>> with open(temp_file.name, 'r', encoding='utf-8') as f:
+    ...     content = f.read()
+    >>> content
+    'Start middle end'
+    >>> os.unlink(temp_file.name)
