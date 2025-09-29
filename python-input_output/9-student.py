@@ -18,7 +18,9 @@ class Student:
             last_name (str): The last name of the student.
             age (int): The age of the student.
         """
-        pass
+        first_name = first_name
+        last_name = last_name
+        age = age
 
     def to_json(self):
         """
@@ -27,4 +29,4 @@ class Student:
         Returns:
             dict: Dictionary representation of the Student instance.
         """
-        pass
+        return self.__dict__
