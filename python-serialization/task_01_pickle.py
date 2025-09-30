@@ -27,9 +27,12 @@ class CustomObject:
             age (int): The age
             is_student (bool): Whether this is a student
         """
-        self.name = name
-        self.age = age
-        self.is_student = is_student
+        if isinstance(name, str):
+            self.name = name
+        if isinstance(age, int):
+            self.age = age
+        if isinstance(is_student, bool):
+            self.is_student = is_student
 
     def display(self):
         """
@@ -53,6 +56,7 @@ class CustomObject:
         """
         with open(filename, 'wb') as f:
             pickle.dump(self, f)
+        f.close()
 
     @classmethod
     def deserialize(cls, filename):
@@ -65,5 +69,7 @@ class CustomObject:
         Returns:
             CustomObject: An instance of CustomObject, or None if error occurs
         """
-        with open(filename, 'rb') as f:
-            return pickle.load(f)
+        if open(filename):
+            with open(filename, 'rb') as f:
+                return pickle.load(f)
+            f.close()
