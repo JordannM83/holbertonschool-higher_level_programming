@@ -42,7 +42,6 @@ class Student:
                     dict_attrs[attr] = self.__dict__[attr]
         return dict_attrs
 
-
     def reload_from_json(self, json):
         """
         Replaces all attributes of the Student instance.
