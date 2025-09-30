@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a Student class with serialization and deserialization
-methods.
+This module defines a Student class with filtering capability.
 """
 
 
@@ -19,7 +18,9 @@ class Student:
             last_name (str): The last name of the student.
             age (int): The age of the student.
         """
-        pass
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
     def to_json(self, attrs=None):
         """
@@ -32,7 +33,15 @@ class Student:
         Returns:
             dict: Dictionary representation of the Student instance.
         """
-        pass
+        if attrs is None:
+            return self.__dict__
+        else:
+            dict_attrs = {}
+            for attr in attrs:
+                if attr in self.__dict__:
+                    dict_attrs[attr] = self.__dict__[attr]
+        return dict_attrs
+
 
     def reload_from_json(self, json):
         """
@@ -42,4 +51,5 @@ class Student:
             json (dict): A dictionary with attribute names as keys
                         and attribute values as values.
         """
-        pass
+        for key, value in json.items():
+            setattr(self, key, value)

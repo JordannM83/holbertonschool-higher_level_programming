@@ -33,7 +33,11 @@ class Student:
         Returns:
             dict: Dictionary representation of the Student instance.
         """
-        if attrs == None:
+        if attrs is None:
             return self.__dict__
         else:
-            
+            dict_attrs = {}
+            for attr in attrs:
+                if attr in self.__dict__:
+                    dict_attrs[attr] = self.__dict__[attr]
+        return dict_attrs
