@@ -5,6 +5,7 @@ Pickling custom classes module.
 This module demonstrates how to serialize and deserialize custom Python objects
 using the pickle module.
 """
+import pickle
 
 
 class CustomObject:
@@ -26,7 +27,9 @@ class CustomObject:
             age (int): The age
             is_student (bool): Whether this is a student
         """
-        pass
+        self.name = name
+        self.age = age
+        self.is_student = is_student
 
     def display(self):
         """
@@ -37,7 +40,9 @@ class CustomObject:
             Age: <age>
             Is Student: <is_student>
         """
-        pass
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+        print(f"Is Student: {self.is_student}")
 
     def serialize(self, filename):
         """
@@ -46,7 +51,8 @@ class CustomObject:
         Args:
             filename (str): The filename to save the serialized object to
         """
-        pass
+        with open(filename, 'wb') as f:
+            pickle.dump(self, f)
 
     @classmethod
     def deserialize(cls, filename):
@@ -59,4 +65,5 @@ class CustomObject:
         Returns:
             CustomObject: An instance of CustomObject, or None if error occurs
         """
-        pass
+        with open(filename, 'rb') as f:
+            return pickle.load(f)
