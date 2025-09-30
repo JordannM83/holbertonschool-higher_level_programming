@@ -5,6 +5,7 @@ XML serialization and deserialization module.
 This module explores serialization and deserialization using XML as an
 alternative format to JSON.
 """
+import xml.etree.ElementTree as ET
 
 
 def serialize_to_xml(dictionary, filename):
