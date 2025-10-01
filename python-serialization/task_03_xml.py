@@ -16,7 +16,7 @@ def serialize_to_xml(dictionary, filename):
         dictionary (dict): The Python dictionary to serialize
         filename (str): The filename to save the XML data to
     """
-    pass
+    
 
 
 def deserialize_from_xml(filename):
@@ -29,4 +29,7 @@ def deserialize_from_xml(filename):
     Returns:
         dict: The deserialized Python dictionary
     """
-    pass
+    tree = ET.parse(filename)
+    root = tree.getroot()
+    for child in root:
+        print(child.tag, child.attrib)
