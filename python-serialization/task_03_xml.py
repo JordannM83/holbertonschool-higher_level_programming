@@ -16,7 +16,14 @@ def serialize_to_xml(dictionary, filename):
         dictionary (dict): The Python dictionary to serialize
         filename (str): The filename to save the XML data to
     """
-    
+    root = ET.Element("data")
+
+    for key, value in dictionary.items():
+        child = ET.SubElement(root, key)
+        child.text = str(value)
+
+    tree = ET.ElementTree(root)
+    tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
 def deserialize_from_xml(filename):
@@ -29,7 +36,14 @@ def deserialize_from_xml(filename):
     Returns:
         dict: The deserialized Python dictionary
     """
-    tree = ET.parse(filename)
-    root = tree.getroot()
-    for child in root:
-        print(child.tag, child.attrib)
+    try:
+        tree = ET.parse(filename)
+        root = tree.getroot()
+
+        result = {}
+        for child in root:
+            result[child.tag] = child.text
+
+        return result
+    except (ET.ParseError, FileNotFoundError):
+        return None
