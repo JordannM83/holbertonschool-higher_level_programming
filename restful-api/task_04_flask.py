@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Simple Flask API
+Simple Flask API for a server for manage
+data and user
 """
 from flask import Flask, jsonify, request
 
@@ -12,7 +13,9 @@ users = {}
 
 @app.route('/')
 def home():
-    """Home endpoint"""
+    """Home endpoint
+    it's the main page
+    """
     return "Welcome to the Flask API!"
 
 
@@ -24,7 +27,10 @@ def get_data():
 
 @app.route('/status')
 def get_status():
-    """Status endpoint"""
+    """
+    Status endpoint
+    it's the verification of the server
+    """
     return "OK"
 
 
