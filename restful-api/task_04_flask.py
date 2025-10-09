@@ -22,7 +22,7 @@ def home():
 @app.route('/data')
 def get_data():
     """Data endpoint - returns list of usernames"""
-    return jsonify(list(users.keys()))
+    return jsonify(list(users.keys())), 200
 
 
 @app.route('/status')
@@ -31,16 +31,16 @@ def get_status():
     Status endpoint
     it's the verification of the server
     """
-    return "OK"
+    return "OK", 200
 
 
 @app.route('/users/<username>')
 def get_user(username):
     """Get user by username"""
     try:
-        return jsonify(users[username])
+        return jsonify(users[username]), 200
     except KeyError:
-        return jsonify({"error": "User not found"})
+        return jsonify({"error": "User not found"}), 404
 
 
 @app.route('/add_user', methods=['POST'])
