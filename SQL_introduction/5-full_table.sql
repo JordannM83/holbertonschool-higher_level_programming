@@ -1,2 +1,2 @@
 -- Prints the full description of the table first_table from the database hbtn_0c_0
-select * from hbtn_0c_0 where first_table = 'MY_TABLE' order by column_id
+EXPLAIN first_table;
