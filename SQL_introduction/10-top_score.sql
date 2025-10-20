@@ -1,0 +1,1 @@
+-- Lists all records of the table second_table ordered by score (top first)

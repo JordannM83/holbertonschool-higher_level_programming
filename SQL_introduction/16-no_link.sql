@@ -1,0 +1,1 @@
+-- Lists all records of the table second_table where the name column is not null
