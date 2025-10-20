@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "name": "MySQL Local",
+            "driver": "MySQL",
+            "server": "localhost",
+            "port": 3306,
+            "database": "hbtn_0c_0",
+            "username": "vscode",
+            "password": "",
+            "askForPassword": false,
+            "connectionTimeout": 30
+        }
+    ]
+}
