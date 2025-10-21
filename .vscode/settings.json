@@ -5,7 +5,7 @@
             "driver": "MySQL",
             "server": "localhost",
             "port": 3306,
-            "database": "hbtn_0c_0",
+            "database": "hbtn_0d_2",
             "username": "vscode",
             "password": "",
             "askForPassword": false,
