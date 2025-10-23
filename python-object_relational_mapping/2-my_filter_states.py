@@ -7,12 +7,7 @@ import MySQLdb
 import sys
 
 
-def main():
-    """
-    Script that takes in an argument and displays all
-    values in the states table
-    where name matches the argument
-    """
+if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost",
                          port=3306,
                          user=sys.argv[1],
@@ -28,7 +23,3 @@ def main():
 
     cursor.close()
     db.close()
-
-
-if __name__ == "__main__":
-    main()
