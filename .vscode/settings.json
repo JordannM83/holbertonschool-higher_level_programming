@@ -11,5 +11,10 @@
             "askForPassword": false,
             "connectionTimeout": 30
         }
-    ]
+    ],
+    "python.testing.pytestArgs": [
+        "python-object_relational_mapping"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
