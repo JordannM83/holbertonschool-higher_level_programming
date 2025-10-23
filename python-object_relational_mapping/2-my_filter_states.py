@@ -24,7 +24,7 @@ def main():
     results = cursor.fetchall()
 
     for row in results:
-        print(row)
+        print(row[1])
 
     cursor.close()
     db.close()
