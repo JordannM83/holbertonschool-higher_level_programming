@@ -3,3 +3,26 @@
 Script that takes in arguments and displays all values in the states table
 where name matches the argument (safe from MySQL injection)
 """
+import MySQLdb
+import sys
+
+
+def main():
+    db = MySQLdb.connect(host="localhost",
+                         user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3])
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE name = %s "
+                   "ORDER BY id ASC", (sys.argv[4],))
+    results = cursor.fetchall()
+
+    for row in results:
+        print(row)
+
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
