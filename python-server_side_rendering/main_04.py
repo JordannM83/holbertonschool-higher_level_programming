@@ -22,15 +22,18 @@ def create_database():
             price REAL NOT NULL
         )
     ''')
+    
+    # Use INSERT OR IGNORE to avoid duplicates
     cursor.execute('''
-        INSERT INTO Products (id, name, category, price)
+        INSERT OR IGNORE INTO Products (id, name, category, price)
         VALUES
         (1, 'Laptop', 'Electronics', 799.99),
         (2, 'Coffee Mug', 'Home Goods', 15.99)
     ''')
+    
     conn.commit()
     conn.close()
-    print("Database created successfully!")
+    print("Database ready!")
 
 if __name__ == '__main__':
     # Create the database first
