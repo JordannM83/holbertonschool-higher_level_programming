@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-a = [1, 2, 3]
-print (id(a))
-
-a += [4]
-print (id(a))
+s1 = "Best School"
+s2 = "Best School"
+print(s1 is s2)
